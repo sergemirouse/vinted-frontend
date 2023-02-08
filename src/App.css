@@ -1,38 +1,142 @@
-.App {
-  text-align: center;
+button {
+  font-family: inherit;
+  background-color: inherit;
+  text-decoration: inherit;
+  border: inherit;
+  cursor: pointer;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input {
+  font-family: inherit;
+  background-color: inherit;
+  text-decoration: inherit;
+  border: inherit;
+  font-size: 16px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input:focus {
+  outline: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h1 {
+  font-size: 40px;
+  color: #171717;
+  line-height: 45px;
+}
+
+div {
+  display: block;
+}
+
+/* ---------- */
+/* HEADER */
+/* ---------- */
+
+header {
+  height: 52 px;
+  border-bottom: 1px solid #ededed;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  margin: 0 80px;
+  max-width: 1280px;
+}
+
+.input-bar {
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  height: 36px;
+  width: 576px;
+}
+
+.magnifying-glass,
+.research-bar {
+  color: #999999;
+  margin-left: 10px;
+}
+
+.login-signup,
+.sell-button {
+  height: 28px;
+  border-radius: 5px;
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.login-signup {
+  color: #017580;
+  background-color: #fff;
+  border: 1px solid #017580;
+  margin-right: 20px;
+}
+.sell-button {
+  color: white;
+  background-color: #017580;
+  margin-left: 70px;
+}
+
+/* ----------- */
+/* HERO */
+/* ----------- */
+
+.hero {
+  background-image: url("./images/hero-banner.jpg");
+  background-position: 50%;
+  background-size: cover;
+  height: 455px;
+  position: relative;
+  width: 100%;
+}
+
+.sales-invit-block {
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 2px hsl(0deg 0% 7% / 24%);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  font-size: 34px;
+  height: 220px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 25px;
+  position: absolute;
+  top: 75px;
+  width: 360px;
+}
+
+.sales-text-container {
+  margin: auto;
+  width: 1280px;
+}
+
+.sales-button {
+  font-size: 16px;
+  height: 45px;
+  margin-top: 32px;
+  padding: 0 14px;
+  width: 187px;
   color: white;
+  background-color: #017580;
+  border-radius: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.background-crop {
+  background-position: 50%;
+  background-size: cover;
+  height: 455px;
+  position: relative;
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.background-crop svg {
+  bottom: 0;
+  height: 50px;
+  position: absolute;
+  right: 0;
 }
