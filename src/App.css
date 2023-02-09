@@ -1,3 +1,8 @@
+body {
+  font-family: Mais-Neue-Reg;
+  height: 100%;
+}
+
 button {
   font-family: inherit;
   background-color: inherit;
@@ -139,4 +144,138 @@ section {
   height: 50px;
   position: absolute;
   right: 0;
+}
+
+/* OFFER CARDS */
+
+.offers-block {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px auto auto;
+  width: 1280px;
+}
+
+article {
+  cursor: pointer;
+  padding: 0 10px 16px;
+  width: 235px;
+  margin-bottom: 40px;
+}
+
+article span,
+article p {
+  color: #757575;
+  margin-left: 10px;
+  line-height: 15px;
+  margin-top: 5px;
+}
+
+.offer-card-head {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  text-decoration: none;
+}
+
+/* ---------- */
+/* OFFER PAGE */
+/* ---------- */
+
+.offer-body {
+  background-color: #ebedee;
+  height: 93.2vh;
+}
+
+.offer-container {
+  display: flex;
+  gap: 30px;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  padding: 30px;
+  width: 1280px;
+  max-height: 85vh;
+}
+
+.product-img {
+  height: 100%;
+}
+
+.offer-infos {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+  width: 320px;
+}
+
+.product-price {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.product-details {
+  display: flex;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+}
+
+.product-key {
+  flex: 1;
+  font-size: 14px;
+  color: #999999;
+  font-weight: 100;
+}
+
+.product-key-info {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: #666666;
+  text-transform: uppercase;
+}
+
+.divider {
+  width: 100%;
+  background: #999999;
+  display: block;
+  height: 1px;
+}
+
+.product-name {
+  font-weight: 600;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  font-size: 16px;
+}
+
+.product-description {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  line-height: 20px;
+  color: #666666;
+  font-size: 16px;
+}
+
+.user-infos {
+  display: flex;
+  align-items: center;
+}
+
+.offer-username {
+  margin-left: 10px;
+}
+
+.buy-button {
+  background: #017580;
+  border: 1px solid #017580;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  height: 36px;
+  line-height: 36px;
+  margin-top: 32px;
+  padding: 0 16px;
+  width: 100%;
 }
