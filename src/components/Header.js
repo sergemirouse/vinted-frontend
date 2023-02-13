@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Header = () => {
+const Header = ({ handleToken, token }) => {
   return (
     <header>
       <section>
         <div>
-          <Link to="./">
+          <Link to="/">
             <svg
               width="83"
               height="48"
@@ -32,11 +32,28 @@ const Header = () => {
             placeholder="Recherche des articles"
           ></input>
         </div>
-        <div>
-          <button className="login-signup">S'inscrire</button>
-          <button className="login-signup">Se connecter</button>
-          <button className="sell-button">Vends tes articles</button>
-        </div>
+
+        {token ? (
+          <button
+            className="logout"
+            onClick={() => {
+              // Cookies.remove("token-vinted");
+              handleToken(null);
+            }}
+          >
+            Se déconnecter
+          </button>
+        ) : (
+          <div>
+            <Link to="/signup">
+              <button className="login-signup">S'inscrire</button>
+            </Link>
+            <Link to="/login">
+              <button className="login-signup">Se connecter</button>
+            </Link>
+          </div>
+        )}
+        <button className="sell-button">Vends tes articles</button>
       </section>
     </header>
   );

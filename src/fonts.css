@@ -2,7 +2,8 @@
   font-family: "Mais-Neue-Reg";
   src: url("./fonts/Font.eot");
   src: url("./fonts/Font.eot?#iefix") format("embedded-opentype"),
-    url("./fonts/Font.woff2") format("woff2"), url("Font.woff") format("woff"),
+    url("./fonts/Font.woff2") format("woff2"),
+    url("./fonts/Font.woff") format("woff"),
     url("./fonts/Font.ttf") format("truetype"),
     url("./fonts/Font.svg#Font") format("svg");
   font-weight: normal;

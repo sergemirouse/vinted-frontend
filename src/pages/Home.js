@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import OfferCard from "../components/OfferCard";
 
-const Home = () => {
+const Home = ({ token }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +40,12 @@ const Home = () => {
         <div className="sales-text-container">
           <div className="sales-invit-block">
             <h1>Prêts à faire du tri dans vos placards ?</h1>
-            <button className="sales-button">Commencer à vendre</button>
+            <button
+              className="sales-button"
+              // onClick={token ? (navigate = "/Publish") : (navigate = "/Login")}
+            >
+              Commencer à vendre
+            </button>
           </div>
         </div>
       </div>

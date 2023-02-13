@@ -4,10 +4,7 @@ const OfferCard = ({ offerInfos }) => {
   //   console.log(props);
   return (
     // <p>salut</p>
-    <Link
-      to={`/offer/${offerInfos._id}`}
-      style={{ textDecoration: "none", color: "" }}
-    >
+    <Link to={`/offer/${offerInfos._id}`} style={{ textDecoration: "none" }}>
       <article>
         <div className="offer-card-head">
           {offerInfos.owner.account.avatar && (
