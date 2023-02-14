@@ -3,8 +3,8 @@ import { useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
 
 function Publish({ token }) {
-  console.log(token);
-  const [picture, setPicture] = useState({});
+  // console.log(token);
+  const [picture, setPicture] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -15,6 +15,7 @@ function Publish({ token }) {
   const [price, setPrice] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  console.log(picture);
   const navigate = useNavigate();
 
   return token ? (
@@ -60,9 +61,6 @@ function Publish({ token }) {
         <h2 style={{ textAlign: "left" }}>Vends ton article</h2>
         <div className="file-select">
           <div className="file-area">
-            <label htmlFor="file" className="file">
-              Ajoute une image
-            </label>
             <input
               id="file"
               type="file"
@@ -72,8 +70,16 @@ function Publish({ token }) {
                 setPicture(event.target.files[0]);
               }}
             />
-            {picture && (
-              <img src={URL.createObjectURL(picture)} alt="product" />
+            {!picture ? (
+              <label htmlFor="file" className="file">
+                Ajoute une photo
+              </label>
+            ) : (
+              <img
+                src={URL.createObjectURL(picture)}
+                alt="product"
+                className="img-preview"
+              />
             )}
           </div>
         </div>
