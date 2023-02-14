@@ -326,11 +326,6 @@ input[type="checkbox"] {
   cursor: pointer;
   transform: scale(2);
   margin-right: 25px;
-
-  /* -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none; */
-
   border-radius: 4px;
   border: 1px solid #ccc;
   height: 15px;
@@ -416,7 +411,7 @@ input::placeholder {
 .publish-form {
   display: flex;
   flex-direction: column;
-  margin: 52px auto 0 auto;
+  margin: 30px auto 0 auto;
   max-width: 1280px;
 }
 
@@ -534,5 +529,95 @@ textarea::placeholder {
   color: #fff;
   font-size: 16px;
   margin-top: 20px;
+  margin-bottom: 40px;
   outline: none;
+}
+
+/* ---------- */
+/* PAYMENT PAGE */
+/* ---------- */
+
+.payment-form {
+  background: #ebedee;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.payment-container {
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 600px;
+}
+
+.payment-title {
+  color: #999;
+  font-size: 14px;
+}
+
+.first-part-line {
+  color: #666;
+}
+
+.content {
+  padding: 24px;
+  border-bottom: 1px solid #ededed;
+}
+
+.total-container {
+  padding: 24px;
+}
+
+.content p {
+  line-height: 40px;
+}
+
+.summary-container {
+  padding: 24px;
+}
+
+.amount-lines {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.summary {
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ededed;
+}
+
+.bold {
+  font-weight: bold;
+  line-height: 25px;
+}
+
+.card-number-block {
+  background: #fff;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgb(50 50 93 / 15%), 0 1px 0 rgb(0 0 0 / 2%);
+  display: block;
+  font-family: Source Code Pro;
+  font-size: 1em;
+  margin: 10px 0 20px;
+  outline: 0;
+  padding: 10px 14px;
+}
+
+.payment-container button {
+  background: #00c06d;
+  border: 1px solid;
+  border-color: #00c06d;
+  border-radius: 4px;
+  color: #fff;
+  display: block;
+  font-size: 16px;
+  height: 44px;
+  line-height: 22px;
+  margin-top: 8px;
+  padding: 0 14px;
+  width: 100%;
 }
