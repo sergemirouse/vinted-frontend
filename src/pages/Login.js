@@ -43,7 +43,7 @@ const Login = ({ handleToken }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "30px",
+        marginTop: "82px",
         textAlign: "center",
       }}
     >

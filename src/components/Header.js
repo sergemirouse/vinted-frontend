@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Header = ({ handleToken, token }) => {
+const Header = ({ handleToken, token, search, setSearch }) => {
   return (
     <header>
       <section>
@@ -27,10 +27,14 @@ const Header = ({ handleToken, token }) => {
             icon="magnifying-glass"
           />
           <input
+            value={search}
             className="research-bar"
             type="text"
             placeholder="Recherche des articles"
-          ></input>
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
+          />
         </div>
 
         {token ? (
@@ -53,7 +57,9 @@ const Header = ({ handleToken, token }) => {
             </Link>
           </div>
         )}
-        <button className="sell-button">Vends tes articles</button>
+        <Link to="/publish">
+          <button className="sell-button">Vends tes articles</button>
+        </Link>
       </section>
     </header>
   );

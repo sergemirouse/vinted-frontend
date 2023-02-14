@@ -1,19 +1,17 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import OfferCard from "../components/OfferCard";
 
-const Home = ({ token }) => {
+const Home = ({ search }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          `https://lereacteur-vinted-api.herokuapp.com/offers?title=${search}`
         );
         setData(response.data);
         setIsLoading(false);
@@ -21,9 +19,9 @@ const Home = ({ token }) => {
         console.log(error.message);
       }
     };
-    // J'appelle ma fonction
+
     fetchData();
-  }, []);
+  }, [search]);
 
   return isLoading ? (
     <p>Loading ...</p>
@@ -40,12 +38,17 @@ const Home = ({ token }) => {
         <div className="sales-text-container">
           <div className="sales-invit-block">
             <h1>Prêts à faire du tri dans vos placards ?</h1>
-            <button
-              className="sales-button"
-              // onClick={token ? (navigate = "/Publish") : (navigate = "/Login")}
-            >
-              Commencer à vendre
-            </button>
+            <div>
+              <Link
+                to="/publish"
+                style={{
+                  height: "0px",
+                  width: "0px",
+                }}
+              >
+                <button className="sales-button">Commencer à vendre</button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

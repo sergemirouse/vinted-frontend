@@ -1,10 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import axios from "axios";
-import { icon } from "@fortawesome/fontawesome-svg-core";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 const Signup = ({ handleToken }) => {
   const [username, setUsername] = useState("");
@@ -50,7 +48,7 @@ const Signup = ({ handleToken }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        marginTop: "30px",
+        marginTop: "82px",
         textAlign: "center",
       }}
       className="signup-container"
@@ -89,6 +87,7 @@ const Signup = ({ handleToken }) => {
           <div className="checkbox-line">
             <input
               checked={newsletter}
+              id="exchange"
               type="checkbox"
               onChange={() => {
                 setNewsletter(!newsletter);

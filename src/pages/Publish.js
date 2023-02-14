@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
 
-function Publish({ handleToken, token }) {
-  const [picture, setPicture] = useState();
-  const [imageToDisplay, setImageToDisplay] = useState();
+function Publish({ token }) {
+  console.log(token);
+  const [picture, setPicture] = useState({});
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -17,17 +17,16 @@ function Publish({ handleToken, token }) {
 
   const navigate = useNavigate();
 
-  return (
-    <div className="Publish">
+  return token ? (
+    <div className="publish">
       <form
         className="publish-form"
         onSubmit={async (event) => {
           event.preventDefault();
           setErrorMessage("");
           try {
-            // Je crée une nouvelle instance du constructeur FormData
             const formData = new FormData();
-            // Je rajoute 3 paires clef/valeur à mon formdata
+
             formData.append("picture", picture);
             formData.append("title", title);
             formData.append("description", description);
@@ -38,10 +37,6 @@ function Publish({ handleToken, token }) {
             formData.append("city", city);
             formData.append("price", price);
 
-            // Je donne 3 arguments à axios.post :
-            // - L'URL à interroger
-            // - le body, ici un formData
-            // - Les potentiels headers à envoyer : ici un token et le type du body que j'envoie
             const response = await axios.post(
               "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
               formData,
@@ -53,33 +48,38 @@ function Publish({ handleToken, token }) {
               }
             );
             console.log(response);
-            setImageToDisplay(response.data);
-            if (response.data.token) {
-              handleToken(response.data.token);
-              navigate("/");
-            }
+            navigate("/");
           } catch (error) {
-            console.log(error.response.data);
-            console.log(error.response.status);
-            if (error.response.data.message === "Unauthorized") {
+            console.log(error);
+            if (error.message === "Unauthorized") {
               setErrorMessage("Veuillez remplir tous les chanmps obligatoires");
             }
           }
         }}
       >
         <h2 style={{ textAlign: "left" }}>Vends ton article</h2>
-        <section className="picture-section">
-          <input
-            type="file"
-            label="Ajoute une photo"
-            onChange={(event) => {
-              setPicture(event.target.files[0]);
-            }}
-          />
-        </section>
-        <section className="first-section">
-          <div>
-            <label>Titre</label>
+        <div className="file-select">
+          <div className="file-area">
+            <label htmlFor="file" className="file">
+              Ajoute une image
+            </label>
+            <input
+              id="file"
+              type="file"
+              label="Ajoute une photo"
+              style={{ display: "none" }}
+              onChange={(event) => {
+                setPicture(event.target.files[0]);
+              }}
+            />
+            {picture && (
+              <img src={URL.createObjectURL(picture)} alt="product" />
+            )}
+          </div>
+        </div>
+        <div className="text-input-section">
+          <div className="text-input">
+            <h4>Titre</h4>
             <input
               value={title}
               type="text"
@@ -89,23 +89,22 @@ function Publish({ handleToken, token }) {
               }}
             />
           </div>
-          <div>
-            <label>Décris ton article</label>
+          <div className="text-input">
+            <h4>Décris ton article</h4>
             <textarea
               value={description}
               type="text"
               rows="5"
-              style={{ border: "1px solid black" }}
               placeholder="ex: porté quelques fois, taille correctement"
               onChange={(event) => {
                 setDescription(event.target.value);
               }}
             />
           </div>
-        </section>
-        <section className="second-section">
-          <div>
-            <label>Marque</label>
+        </div>
+        <div className="text-input-section">
+          <div className="text-input">
+            <h4>Marque</h4>
             <input
               value={brand}
               type="text"
@@ -115,8 +114,8 @@ function Publish({ handleToken, token }) {
               }}
             />
           </div>
-          <div>
-            <label>Taille</label>
+          <div className="text-input">
+            <h4>Taille</h4>
             <input
               value={size}
               type="text"
@@ -126,8 +125,8 @@ function Publish({ handleToken, token }) {
               }}
             />
           </div>
-          <div>
-            <label>Couleur</label>
+          <div className="text-input">
+            <h4>Couleur</h4>
             <input
               value={color}
               type="text"
@@ -137,8 +136,8 @@ function Publish({ handleToken, token }) {
               }}
             />
           </div>
-          <div>
-            <label>État</label>
+          <div className="text-input">
+            <h4>État</h4>
             <input
               value={condition}
               type="text"
@@ -148,8 +147,8 @@ function Publish({ handleToken, token }) {
               }}
             />
           </div>
-          <div>
-            <label>Lieu</label>
+          <div className="text-input">
+            <h4>Lieu</h4>
             <input
               value={city}
               type="text"
@@ -159,24 +158,26 @@ function Publish({ handleToken, token }) {
               }}
             />
           </div>
-        </section>
-        <section className="third-section">
-          <div>
-            <label>Prix</label>
-            <input
-              value={price}
-              type="text"
-              placeholder="0,00 €"
-              onChange={(event) => {
-                setPrice(event.target.value);
-              }}
-            />
+        </div>
+        <div className="text-input-section">
+          <div className="text-input">
+            <h4>Prix</h4>
+            <div className="checkbox-section">
+              <input
+                value={price}
+                type="text"
+                placeholder="0,00 €"
+                onChange={(event) => {
+                  setPrice(event.target.value);
+                }}
+              />
+              <div className="checkbox-input">
+                <input type="checkbox" />
+                <span>Je suis intéressé par les échanges</span>
+              </div>
+            </div>
           </div>
-          <div className="checkbox-section">
-            <input type="checkbox" />
-            <span>Je suis intéressé par les échanges</span>
-          </div>
-        </section>
+        </div>
         <div className="form-button-container">
           <button className="form-button" type="submit">
             Ajouter
@@ -186,8 +187,9 @@ function Publish({ handleToken, token }) {
           <p style={{ color: "red", marginTop: "10px" }}>{errorMessage}</p>
         )}
       </form>
-      {imageToDisplay && <img src={imageToDisplay.secure_url} alt="Post" />}
     </div>
+  ) : (
+    <Navigate to="/login" />
   );
 }
 
