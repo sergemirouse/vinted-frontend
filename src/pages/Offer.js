@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Offer = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  const navigate = useNavigate();
 
   // Je récupère l'id présent dans l'url
   const params = useParams();
@@ -74,7 +77,19 @@ const Offer = () => {
               </span>
             </div>
             <div>
-              <button className="buy-button">Acheter</button>
+              <button
+                className="buy-button"
+                onClick={() => {
+                  navigate("/payment", {
+                    state: {
+                      title: data.product_name,
+                      price: data.product_price,
+                    },
+                  });
+                }}
+              >
+                Acheter
+              </button>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+
 import axios from "axios";
 import { useState } from "react";
 
@@ -24,7 +25,7 @@ const CheckoutForm = () => {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/payment",
         {
-          stripeToken: stripeToken,
+          token: stripeToken,
         }
       );
       console.log(response.data);
@@ -33,7 +34,7 @@ const CheckoutForm = () => {
         setCompleted(true);
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error.response.data);
     }
   };
 
