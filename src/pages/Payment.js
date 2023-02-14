@@ -11,16 +11,16 @@ const Payment = () => {
   const location = useLocation();
   const { title, price } = location.state;
 
-  console.log(title);
-  console.log(price);
+  //   console.log(title);
+  //   console.log(price);
   return (
-    <>
+    <div>
       <span>{title}</span>
       <span>{price}</span>
       <Elements stripe={stripePromise}>
-        <CheckoutForm element={<Payment title={title} price={price} />} />
+        <CheckoutForm title={title} price={price} />
       </Elements>
-    </>
+    </div>
   );
 };
 

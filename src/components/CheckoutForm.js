@@ -3,7 +3,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useState } from "react";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ title, price }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [completed, setCompleted] = useState(false);
 
@@ -26,21 +26,43 @@ const CheckoutForm = () => {
         "https://lereacteur-vinted-api.herokuapp.com/payment",
         {
           token: stripeToken,
+          title: title,
+          amount: price,
         }
       );
       console.log(response.data);
-      if (response.data === "succeeded") {
+      if (response.data.status === "succeeded") {
         setIsLoading(false);
         setCompleted(true);
       }
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error.response);
     }
   };
 
   return (
     <form style={{ width: "300px", marginTop: "52px" }} onSubmit={handleSubmit}>
-      <h1>Formulaire de paiement</h1>
+      <p>Résumé de la commande</p>
+      <section className="price-lines">
+        <div className="price-line">
+          <span>Commande</span>
+          <span id="price">{price.toFixed(2)} €</span>
+        </div>
+        <div className="price-line">
+          <span>Frais protection acheteurs</span>
+          <span id="insurance">{((price * 10) / 100).toFixed(2)} €</span>
+        </div>
+        <div className="price-line">
+          <span>Frais de port</span>
+          <span id="travel-fees">{((price * 20) / 100).toFixed(2)} €</span>
+        </div>
+      </section>
+      <section>
+        <div>
+          <span>Total</span>
+          <span>{/* ici, je veux mettre le total de la transaction*/} </span>
+        </div>
+      </section>
       <CardElement />
 
       {completed ? (
